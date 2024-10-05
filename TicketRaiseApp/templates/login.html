@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'login/login.css' %}">
+    <title>TicketRaise</title>
+</head>
+
+<body>
+    {% if error_message %}
+        <div class="error">{{ error_message }}</div>
+    {% endif %}
+    <form class="container" method="POST" action="{% url 'credentialCheck' %}">
+        <div class="displayTags">Hello Students 😊!</div>
+        {% csrf_token %}
+        <div class="displayTags"><label for="email">Email</label></div>
+        <div class="inputTags"><input type="text" id="email" name="userEmail"></div>
+
+        <div class="displayTags"><label for="password">Password</label></div>
+        <div class="inputTags"><input type="password" id="password" name="userPass"></div>
+
+        <div class="btn">
+            <button type="submit" class="login" name="buttonClick" value="loginButton">Login</button>
+            <button type="submit" class="signup" name="buttonClick" value="signupButton">SignUp</button>
+        </div>
+    </form>
+</body>
+
+</html>

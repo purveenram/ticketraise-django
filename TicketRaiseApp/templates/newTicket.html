@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'registration/registration.css' %}">
+    <title>TicketRaise</title>
+</head>
+<body>
+    <form class="container" method="POST" action="{% url 'addQuery' %}">
+        <div class="displayTags">Place your query!</div>
+        {% csrf_token %}
+        <input type="hidden" name="studentIdInQuery" id="{{ form.studentIdInQuery.id_for_id }}" value="{{ studentRegNo }}">
+
+        <div class="displayTags"><label for="{{ form.courseInQuery.id_for_id }}">Course</label></div>
+        <div class="inputTags"><input type="text" name="courseInQuery" id="{{ form.courseInQuery.id_for_id }}"></div>
+
+        <div class="displayTags"><label for="{{ form.courseCodeInQuery.id_for_id }}">Course Code</label></div>
+        <div class="inputTags"><input type="text" name="courseCodeInQuery" id="{{ form.courseCodeInQuery.id_for_id }}"></div>
+
+        <div class="displayTags"><label for="{{ form.slotInQuery.id_for_id }}">Slot</label></div>
+        <div class="inputTags"><input type="text" name="slotInQuery" id="{{ form.slotInQuery.id_for_id }}"></div>
+
+        <div class="displayTags"><label for="{{ form.topicInQuery.id_for_id }}">Topic</label></div>
+        <div class="inputTags"><input type="text" name="topicInQuery" id="{{ form.topicInQuery.id_for_id }}"></div>
+
+        <div class="displayTags"><label for="{{ form.doubtInQuery.id_for_id }}">Description</label></div>
+        <div class="inputTags"><input type="text" name="doubtInQuery" id="{{ form.doubtInQuery.id_for_id }}"></div>
+
+        <input type="hidden" name="feedbackInQuery" id="{{ form.feedbackInQuery.id_for_id }}" value="No Reply...">
+
+        <input type="hidden" name="feedbackStatus" id="{{ form.feedbackStatus.id_for_id }}" value="N">
+
+        <div class="btn">
+            <button type="submit" class="Register" name="buttonClickRegister" >Submit</button>
+        </div>
+    </form>
+</body>
+</html>

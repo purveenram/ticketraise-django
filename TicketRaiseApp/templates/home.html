@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'home/home.css' %}">
+    <title>TicketRaise</title>
+</head>
+
+<body>
+    <div class="homeContainer">
+        <div class="navbar">
+            <a class="newTicket" href="{% url 'newTicket' %}">New-Ticket</a>
+            <a class="logout" href="{% url 'logout' %}">Logout</a>
+        </div>
+        <div class="contentArea">
+            {% if querys %}
+            {% for query in querys %}
+            <div class="ifcontentPresent">
+                <div class="left">
+                    <div class="display">Course &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp : {{ query.courseInQuery }}</div>
+                    <div class="display">Course-Code : {{ query.courseCodeInQuery }}</div>
+                    <div class="display">Slot &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp : {{ query.slotInQuery }}</div>
+                    <div class="display">Topic &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp : {{ query.topicInQuery }}</div>
+                    <div class="display">Doubt &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp : {{ query.doubtInQuery }}</div>
+                    {% if query.feedbackStatus == 'N' %}
+                    <div class="display"><a class="cancel" href="{% url 'removeInQuery' queryId=query.id %}">Cancel</a></div>
+                    {% elif query.feedbackStatus == 'Y' %}
+                    <div class="answered">Answered</div>
+                    {% endif %}
+                </div>
+                <div class="response">{{ query.feedbackInQuery }}</div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="ifcontentNotPresent">
+                <div class="noQuery">No Query !</div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+
+</html>

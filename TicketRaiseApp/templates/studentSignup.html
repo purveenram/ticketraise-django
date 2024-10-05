@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'registration/registration.css' %}">
+    <title>TicketRaise</title>
+</head>
+<body>
+    <form class="container" method="POST" action="{% url 'addStudent' %}">
+        {% csrf_token %}
+
+        <div class="displayTags">Please Register Here!</div>
+
+        <div class="displayTags"><label for="{{ form.studentName.id_for_id }}">Name</label></div>
+        <div class="inputTags"><input type="text" name="studentName" id="{{ form.studentName.id_for_id }}"></div>
+
+        <div class="displayTags"><label for="{{ form.studentEmail.id_for_id }}">Email Id</label></div>
+        <div class="inputTags">
+            <input type="email" name="studentEmail" id="{{ form.studentEmail.id_for_id }}" pattern=".+@vitstudent\.ac\.in" title="Please enter a valid email address with @vitstudent.ac.in" required>
+        </div>       
+
+        <div class="displayTags"><label for="{{ form.studentPassword.id_for_id }}">Password</label></div>
+        <div class="inputTags"><input type="password" name="studentPassword" id="{{ form.studentPassword.id_for_id }}"></div>
+
+        <div class="displayTags"><label for="{{ form.studentRegNo.id_for_id }}">Register No</label></div>
+        <div class="inputTags"><input type="text" name="studentRegNo" id="{{ form.studentRegNo.id_for_id }}"></div>
+
+        <div class="displayTags"><label for="{{ form.studentGender.id_for_id }}">Gender</label></div>
+        <div class="inputTags">
+            <select class="genderOption" name="studentGender" id="{{ form.studentGender.id_for_id }}">
+                <option value="" selected disabled>Select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Others">Others</option>
+            </select>
+        </div>
+        
+        <div class="btn">
+            <button type="submit" class="Register" name="buttonClickRegister" >Register</button>
+        </div>
+    </form>
+</body>
+</html>
