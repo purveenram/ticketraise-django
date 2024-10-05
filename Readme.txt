@@ -1,4 +1,4 @@
-projectName = Tokiyo
+projectName = TicketRaise
 -------------------------------------------------------------------------------------------
 
 for creating django project
